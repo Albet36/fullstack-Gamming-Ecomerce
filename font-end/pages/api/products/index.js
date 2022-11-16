@@ -1,8 +1,8 @@
-import data from './data.json';
+import { listProduct } from './api';
+export const queryListProduct = async() =>{
+  
+} 
 
-export const listProducts = async() => {
-  return data;
-}
 
 export default function handler(req, res) {
   if (req.method !== 'GET') {

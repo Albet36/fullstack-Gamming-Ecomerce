@@ -1,15 +1,26 @@
+import { useState,useEffect } from 'react';
 import ProductCard from '../components/ProductCard';
 import styles from '../styles/ShopPage.module.css';
-import { getProducts } from './api/products/index';
+import { listProduct } from './api/products/api';
 
-const ShopPage = ({ products }) => {
+const ShopPage = () => {
+  const [products,setProducts]= useState();
+
+  const getAllProduct = async () => {
+    let response = await listProduct();
+     setProducts(response.data);
+  }
+  useEffect(() => {
+    getAllProduct();
+  },[])
+   console.log(products);
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>All Results</h1>
       <div className={styles.cards}>
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
+         {products && products.map((product) => (
+          <ProductCard key={product._id} product={product} />
+        ))} 
       </div>
     </div>
   );
@@ -17,7 +28,4 @@ const ShopPage = ({ products }) => {
 
 export default ShopPage;
 
-export async function getStaticProps() {
-  const products = await getProducts();
-  return { props: { products } };
-}
+

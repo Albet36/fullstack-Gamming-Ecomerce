@@ -1,12 +1,10 @@
 import { listProduct } from './api';
-import data from './data.json';
 
 export const getProductsByCategory = async(category) => {
   const values = await listProduct();
 const valueObj = values.data.map((product) => {return product});
-console.log(valueObj);
   const products = valueObj.filter((product) => product.category === category);
-  console.log(products);
+  console.log(valueObj);
   return products;
 }
 

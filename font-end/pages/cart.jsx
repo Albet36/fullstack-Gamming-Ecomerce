@@ -13,7 +13,7 @@ const CartPage = () => {
 
   const getTotalPrice = () => {
     return cart.reduce(
-      (accumulator, item) => accumulator + item.quantity * item.price,
+      (accumulator, item) => Math.round(accumulator + item.quantity * item.price),
       0
     );
   };
@@ -51,7 +51,7 @@ const CartPage = () => {
                   x
                 </button>
               </div>
-              <p>$ {item.quantity * item.price}</p>
+              <p>$ { Math. round(item.quantity * item.price) }</p>
             </div>
           ))}
           <h2>Grand Total: $ {getTotalPrice()}</h2>
