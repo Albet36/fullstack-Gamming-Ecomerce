@@ -41,13 +41,13 @@ const CartPage = () => {
               <p>$ {item.price}</p>
               <p>{item.quantity}</p>
               <div className={styles.buttons}>
-                <button onClick={() => dispatch(incrementQuantity(item.id))}>
+                <button onClick={() => dispatch(incrementQuantity(item._id))}>
                   +
                 </button>
-                <button onClick={() => dispatch(decrementQuantity(item.id))}>
+                <button onClick={() => dispatch(decrementQuantity(item._id))}>
                   -
                 </button>
-                <button onClick={() => dispatch(removeFromCart(item.id))}>
+                <button onClick={() => dispatch(removeFromCart(item._id))}>
                   x
                 </button>
               </div>

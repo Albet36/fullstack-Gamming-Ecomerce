@@ -1,6 +1,6 @@
 import { Provider } from 'react-redux';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import Navbar from '../components/layouts/Navbar';
+import Footer from '../components/layouts/Footer';
 import store from '../redux/store';
 import '../styles/globals.css';
 

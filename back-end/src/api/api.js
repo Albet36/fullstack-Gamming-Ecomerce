@@ -1,10 +1,11 @@
 import express from 'express';
+import { login,register } from '../auth/auth.controller.js';
 import { createProduct, deleteProduct, editProduct, getProduct, listProduct, searchProduct } from '../product/product.controller.js';
 // import { login,register } from '../module/auth/auth.controller.js';
 // import { classss } from '../Controllers/class.js';
 const api = express.Router();
-// api.post('/auth/login',login);
-// api.post('/auth/register',register);
+ api.post('/auth',login);
+ api.post('/auth/register',register);
 // api.put('/');
 // api.delete('/');
 api.get('/product',listProduct);

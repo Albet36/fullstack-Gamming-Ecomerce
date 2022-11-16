@@ -1,5 +1,4 @@
-import auth from "../../Models/auth/auth.js";
-import students from "../../Models/users/student.js";
+import auth from "../auth/auth.models.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 export const login = async (req, res) => {
@@ -7,16 +6,20 @@ export const login = async (req, res) => {
   try {
     const oldUser = await auth.findOne({ username });
     if (!oldUser) {
-      return resizeBy.status(404).json({ message: "Người dùng không tồn tại" });
+      return res.status(404).json({ message: "Người dùng không tồn tại" });
     }
     const isPasswordCorrect = await bcrypt.compare(password, oldUser.password);
     if (!isPasswordCorrect) {
-      return resizeBy.status(400).json({ message: "Mật khẩu không đúng" });
+      return res.status(400).json({ message: "Mật khẩu không đúng" });
     }
     const Token = jwt.sign(
       {
         id: oldUser._id,
         username: oldUser.username,
+        name: oldUser.name,
+        age:oldUser.age,
+        address:oldUser.address,
+        phone:oldUser.phone
       },
       process.env.secret,
       {
@@ -31,7 +34,7 @@ export const login = async (req, res) => {
   }
 };
 export const register = async (req, res) => {
-  const { username, password,name, age, address, phone, gender, email } =
+  const { username, password,name, age, address, phone } =
     req.body;
   try {
     const oldUser = await auth.findOne({ username });
@@ -44,25 +47,26 @@ export const register = async (req, res) => {
     const result = await auth.create({
       username,
       password: hashedPass,
-    });
-    const result2 = await students.create({
-      idStudent,
       name,
       age,
       address,
       phone,
-      gender,
-      email,
+      // role:String
     });
+   
     const Token = jwt.sign(
       {
-        username: result2.username,
-        id: result1._id,
+        id: result._id,
+        username: result.username,
+        name:result.name,
+        age:result.age,
+        address:result.address,
+        phone:result.phone
       },
       process.env.secret,
       { expiresIn: "1h" }
     );
-    res.staus(200).json({ result, result2, Token });
+    res.staus(200).json({result : Token});
   } catch (error) {
     res
       .status(500)
