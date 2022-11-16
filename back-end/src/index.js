@@ -1,0 +1,13 @@
+import express from 'express';
+import db from'./db/index.js';
+import dotenv from 'dotenv';
+import bodyParser from'body-parser';
+import api from './api/api.js';
+dotenv.config();
+const app = express();
+const PORT = 2001;
+app.use(bodyParser.json({ extends : true}));
+app.use(bodyParser.urlencoded({extended: true}));
+app.use('/',api);
+db();
+app.listen(PORT, () => {console.log(`localhost:${PORT}`)});

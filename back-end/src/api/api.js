@@ -1,0 +1,16 @@
+import express from 'express';
+import { createProduct, deleteProduct, editProduct, getProduct, listProduct, searchProduct } from '../product/product.controller.js';
+// import { login,register } from '../module/auth/auth.controller.js';
+// import { classss } from '../Controllers/class.js';
+const api = express.Router();
+// api.post('/auth/login',login);
+// api.post('/auth/register',register);
+// api.put('/');
+// api.delete('/');
+api.get('/product',listProduct);
+api.post('/product',createProduct);
+api.put('/product/:id',editProduct);
+api.get('/product/:id',getProduct);
+api.post('/product/search',searchProduct);
+api.delete('/product/:id',deleteProduct);
+export default api;
