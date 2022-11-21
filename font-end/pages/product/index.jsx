@@ -1,7 +1,8 @@
+import { Button, Table } from '@mantine/core';
 import { useState,useEffect } from 'react';
-import ProductCard from '../components/products/ProductCard';
-import styles from '../styles/ShopPage.module.css';
-import { listProduct } from './api/products/api';
+import styles from '../../styles/ShopPage.module.css';
+import { deleteProduct, listProduct } from '../api/products/api';
+// import { listProduct } from './api/products/api';
 
 const ShopPage = () => {
   const [products,setProducts]= useState("");
@@ -37,11 +38,31 @@ const ShopPage = () => {
    </div>
 
     </div>
-      <div className={styles.cards}>
-         {products && products.map((product) => (
-          <ProductCard key={product._id} product={product} />
-        ))} 
-      </div>
+    <Table>
+    <thead>
+      <tr>
+        <th>Element position</th>
+        <th>Element name</th>
+        <th>Symbol</th>
+        <th>Atomic mass</th>
+      </tr>
+    </thead>
+    <tbody>  
+     {products && products.map((product) => (
+        <tr key={product.product}>
+        <td>{product.product}</td>
+        <td>{product.category}</td>
+        <td>{product.image}</td>
+        <td>{product.price}</td>
+        <td><a  href={`/product/${product._id}`} style={{marginRight:5}}>Sửa</a>
+        <Button onClick={() => deleteProduct(product._id)}  style={{marginRight:5}}>Xoá</Button></td>
+      </tr>
+     ))}
+  </tbody>
+  </Table>
+      
+     
+   
     </div>
   );
 };

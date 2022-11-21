@@ -1,4 +1,5 @@
-import CategoryCard from '../components/CategoryCard';
+
+import CategoryCard from '../components/products/CategoryCard.jsx';
 import styles from '../styles/Home.module.css';
 
 const HomePage = () => {
