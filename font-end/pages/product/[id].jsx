@@ -34,37 +34,42 @@ const editProducts = () => {
           price:Number
         },      
       });
+    
     return (
-<div>
-<h1>Thêm sản phẩm</h1>
+<div style={{textAlign:'center'}}>
+<h1>Sửa thông tin sản phẩm</h1>
 <Box sx={{ maxWidth: 300 }} mx="auto">
 <form onSubmit={form.onSubmit(handleSubmit)}>
   <TextInput
     withAsterisk
-    label="Products"
+    label="Products" 
+    value={product.products}
     placeholder="product..."
     {...form.getInputProps('product')}
   />
   <TextInput
   withAsterisk
-  label="category"
+  label="category" 
+  value={product.category}
   placeholder="please category..."
   {...form.getInputProps('category')}
 />
   <TextInput
   withAsterisk
-  label="image"
+  label="image" 
+  value={product.image}
   placeholder="please parse link image URL..."
   {...form.getInputProps('image')}
 />
 <TextInput
 withAsterisk
-label="Price"
+label="Price" 
+value={product.price}
 placeholder="please price..."
 {...form.getInputProps('price')}
 />
   <Group position="right" mt="md">
-    <Button type="submit">Submit</Button>
+    <Button type="submit">Lưu thông tin sản phẩm</Button>
   </Group>
 </form>
 </Box>

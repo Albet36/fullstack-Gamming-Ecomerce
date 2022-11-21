@@ -18,7 +18,7 @@ const addProducts = () => {
         },      
       });
     return (
-<div>
+<div style={{textAlign:'center'}}>
 <h1>Thêm sản phẩm</h1>
 <Box sx={{ maxWidth: 300 }} mx="auto">
 <form onSubmit={form.onSubmit(handleSubmit)}>

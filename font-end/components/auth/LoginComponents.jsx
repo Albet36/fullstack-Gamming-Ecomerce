@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../../redux/auth.slice';
 import {toast} from 'react-toastify';
+import { useRouter } from 'next/router';
 const initialState = {
   username: "",
   password: ""
@@ -9,12 +10,12 @@ const initialState = {
 const LoginComponent = () => {
   const [formValue, setFormValue] = useState(initialState);
   const { username, password } = formValue;
+const router = useRouter();
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
       e.preventDefault();
       if (username && password) {
-          dispatch(login({formValue, toast}));
-
+          dispatch(login({formValue, toast,router}));
       }
   }
   const onInputChange = (e) => {
@@ -24,16 +25,16 @@ const LoginComponent = () => {
   return (
     
   
-  <div className="container p-5">
+  <div className="container p-5" style={{textAlign:'center'}}>
   <form action="">
   <legend>Login</legend>
 
-  <div className="form-group m-5">
-      <label htmlFor="">Username</label>
+  <div className="form-group m-5" style={{margin:'30px 0'}}>
+   
       <input type="text" className="form-control" name="username" value={username}   onChange={onInputChange}  placeholder="username...." />
   </div>
-  <div className="form-group m-5">
-  <label htmlFor="">Password</label>
+  <div className="form-group m-5" style={{margin:'30px 0'}}>
+ 
   <input type="password" className="form-control" name="password" value={password}   onChange={onInputChange}  placeholder="Password..." />
 </div>
   
