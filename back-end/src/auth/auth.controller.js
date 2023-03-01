@@ -17,25 +17,25 @@ export const login = async (req, res) => {
         id: oldUser._id,
         username: oldUser.username,
         name: oldUser.name,
-        age:oldUser.age,
-        address:oldUser.address,
-        phone:oldUser.phone
+        age: oldUser.age,
+        address: oldUser.address,
+        phone: oldUser.phone,
       },
-      process.env.secret,
+      process.env.JWT_ACCESS_KEY,
       {
         expiresIn: "1h",
       }
     );
-    res.status(200).json({ result: oldUser });
+    res.status(200).json({ result: oldUser, Token });
   } catch (error) {
     res
       .status(500)
       .json({ message: "Đã xảy ra sự cố trong quá trình đăng nhập" });
   }
 };
+
 export const register = async (req, res) => {
-  const { username, password,name, age, address, phone } =
-    req.body;
+  const { username, password, name, age, address, phone } = req.body;
   try {
     const oldUser = await auth.findOne({ username });
     if (oldUser) {
@@ -53,48 +53,23 @@ export const register = async (req, res) => {
       phone,
       // role:String
     });
-   
+
     const Token = jwt.sign(
       {
         id: result._id,
         username: result.username,
-        name:result.name,
-        age:result.age,
-        address:result.address,
-        phone:result.phone
+        name: result.name,
+        age: result.age,
+        address: result.address,
+        phone: result.phone,
       },
-      process.env.secret,
+      process.env.JWT_ACCESS_KEY,
       { expiresIn: "1h" }
     );
-    res.staus(200).json({result : Token});
+    res.staus(200).json({ result: Token });
   } catch (error) {
     res
       .status(500)
       .json({ message: "Đã xảy ra sự cố trong quá trình đăng ký" });
   }
 };
-export const infoUser = async (req, res) => {
-  try {
-const result = await auth.find().populate({path:'student',populate:{path:'class' ,model:'class'}})
-return res.json(result);  
-  } catch (error) {
-    
-  }
-};
-export const data = async(req,res) => {
-try {
-  const newData = await auth.create({
-      username: 'abc@gmail.com',
-      password: '123456',
-      role: 'admin',
-      student:  [
-        '63221467b3de3ba54d1eb438'
-      ],
-  }
-  ) 
-  res.json(newData);
-} catch (error) {
-  
-}
-}
-

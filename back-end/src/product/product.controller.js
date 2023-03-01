@@ -6,7 +6,7 @@ export const listProduct = async(req,res) => {
         const listProductItem = await product.find();
          res.status(200).json(listProductItem);
     } catch (error) {
-        res.status(500).json({message:'lay list that bai'});
+        res.status(500).json('lay list that bai');
     }
 }
 export const createProduct = async (req,res) => {
@@ -36,12 +36,22 @@ export const deleteProduct = async(req,res) => {
 }
 export const getProduct = async(req,res) => {
     try {
+        console.log(req.params.id);
         const productItem = await product.findById({_id: req.params.id});
         res.status(200).json(productItem);
     } catch (error) {
         res.status(500).json('failed get product');
     }
 }
+export const getProductByName = async(req,res) => {
+    try {
+        const productItem = await product.find({product: req.params.name});
+        res.status(200).json(productItem);
+    } catch (error) {
+        res.status(500).json('failed get product');
+    }
+}
+
 export const searchProduct = async (req,res) => {
     try {
         const productItem = await product.find(req.body);

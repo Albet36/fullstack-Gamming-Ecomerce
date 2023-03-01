@@ -9,11 +9,7 @@ const authSchema =  mongoose.Schema(
     phone:String,
     // role: String,
 
-    // student: 
-    // [{
-    //     type : Schema.Types.ObjectId, 
-    //     ref : 'students'
-    // }],
+
 }
 )
 const auth = mongoose.model('auth',authSchema);
