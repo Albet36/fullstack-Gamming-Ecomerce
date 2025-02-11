@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { ComponentPage404 } from "../components/ComponentPage404"
 
-export const Page404 = () => {
+ const Page404 = () => {
     const router = useRouter();
 
   const handleInvalidPathClick = () => {
@@ -9,3 +9,4 @@ export const Page404 = () => {
   };
     return <ComponentPage404 />
 } 
+export default Page404;

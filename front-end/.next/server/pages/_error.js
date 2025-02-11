@@ -13,7 +13,7 @@ __webpack_require__.r(__webpack_exports__);
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  "Page404": function() { return /* binding */ Page404; }
+  "default": function() { return /* binding */ _error; }
 });
 
 // EXTERNAL MODULE: external "react/jsx-runtime"
@@ -34,6 +34,7 @@ const ComponentPage404 = () => {
 
 
 
+
 const Page404 = () => {
   const router = (0,router_.useRouter)();
 
@@ -43,6 +44,8 @@ const Page404 = () => {
 
   return /*#__PURE__*/jsx_runtime_.jsx(ComponentPage404, {});
 };
+
+/* harmony default export */ var _error = (Page404);
 
 /***/ }),
 
