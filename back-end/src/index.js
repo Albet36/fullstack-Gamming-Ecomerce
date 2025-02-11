@@ -14,4 +14,4 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use('/',api);
 app.use(cookieParser());
 db();
-app.listen(PORT, () => {console.log(`localhost:${PORT}`)});
+app.listen(PORT, () => {console.log(`localhost:${PORT}, ${process.env.URL_MONGO}`)});
