@@ -3,10 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "preinstall": "export NODE_OPTIONS=--openssl-legacy-provider",
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+"start": "react-scripts --openssl-legacy-provider next start"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
