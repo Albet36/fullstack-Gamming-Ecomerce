@@ -3,11 +3,11 @@ import { TextInput, Checkbox, Button, Group, Box, Select } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { useDispatch } from 'react-redux';
 import {toast} from 'react-toastify';
-import { addProduct } from '../../redux/product.slice';
+// import { addProduct } from '../../redux/product.slice';
 const addProducts = () => {
     const dispatch = useDispatch();
     const handleSubmit = (e) => {
-            dispatch(addProduct({e, toast}));
+            // dispatch(addProduct({e, toast}));
     }
     const form = useForm({
         initialValues: {
