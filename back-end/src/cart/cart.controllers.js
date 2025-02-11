@@ -1,4 +1,4 @@
-import Cart from "./cart.models";
+import Cart from "./cart.models.js";
 
 export const  saveCart = async(req,res) => {
     try {
